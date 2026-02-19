@@ -212,7 +212,7 @@ function App() {
 // ── Landing ────────────────────────────────────────────────
 function Landing({ onSelect }) {
   return (
-    <div style={{ minHeight:"100vh", background:"linear-gradient(160deg,#0a1628 0%,#0f2744 50%,#0d1f3c 100%)", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", padding:"24px", fontFamily:"'Sarabun',sans-serif" }}>
+    <div style={{ minHeight:"100vh", background:"linear-gradient(160deg,#0a1628 0%,#0f2744 50%,#0d1f3c 100%)", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"flex-start", padding:"48px 24px 40px", fontFamily:"'Sarabun',sans-serif" }}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&display=swap'); * { box-sizing: border-box; }`}</style>
 
       {/* Logo area */}
@@ -424,12 +424,13 @@ function StudentView({ students, scores, onBack }) {
           );
         })()}
       </div>
-      {/* Footer */}
-      <div style={{ textAlign:"center", padding:"24px 16px", borderTop:"1px solid #e2e8f0", marginTop:8 }}>
-        <div style={{ fontSize:12, color:"#94a3b8", lineHeight:1.9 }}>
-          <div style={{ fontWeight:700, color:"#64748b" }}>ครูศุทธิมณฑน์รชฎ  ไพโรจน์</div>
-          <div>กลุ่มสาระการเรียนรู้วิทยาศาสตร์และเทคโนโลยี · โรงเรียนป่าลาน</div>
-          <div style={{ color:"#cbd5e1", fontSize:11, marginTop:2 }}>© 2026</div>
+        {/* Footer */}
+        <div style={{ textAlign:"center", padding:"28px 16px 8px", borderTop:"1px solid #e2e8f0", marginTop:16 }}>
+          <div style={{ fontSize:12, color:"#94a3b8", lineHeight:2 }}>
+            <div style={{ fontWeight:700, color:"#64748b", fontSize:13 }}>👩‍🏫 ครูศุทธิมณฑน์รชฎ  ไพโรจน์</div>
+            <div>กลุ่มสาระการเรียนรู้วิทยาศาสตร์และเทคโนโลยี · โรงเรียนป่าลาน</div>
+            <div style={{ color:"#cbd5e1", fontSize:11, marginTop:2 }}>© 2026 · สงวนลิขสิทธิ์</div>
+          </div>
         </div>
       </div>
     </div>
