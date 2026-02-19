@@ -2732,7 +2732,115 @@ function Settings({
       color: "#92400e",
       margin: 0
     }
-  }, "\u26A0\uFE0F \u0E2B\u0E21\u0E32\u0E22\u0E40\u0E2B\u0E15\u0E38: \u0E23\u0E2B\u0E31\u0E2A\u0E1C\u0E48\u0E32\u0E19\u0E16\u0E39\u0E01\u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01\u0E43\u0E19\u0E2D\u0E38\u0E1B\u0E01\u0E23\u0E13\u0E4C\u0E19\u0E35\u0E49 \u0E16\u0E49\u0E32\u0E25\u0E49\u0E32\u0E07\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E40\u0E1A\u0E23\u0E32\u0E27\u0E4C\u0E40\u0E0B\u0E2D\u0E23\u0E4C \u0E23\u0E2B\u0E31\u0E2A\u0E08\u0E30\u0E01\u0E25\u0E31\u0E1A\u0E40\u0E1B\u0E47\u0E19\u0E04\u0E48\u0E32\u0E40\u0E23\u0E34\u0E48\u0E21\u0E15\u0E49\u0E19 ", /*#__PURE__*/React.createElement("strong", null, "1234")))));
+  }, "\u26A0\uFE0F \u0E2B\u0E21\u0E32\u0E22\u0E40\u0E2B\u0E15\u0E38: \u0E23\u0E2B\u0E31\u0E2A\u0E1C\u0E48\u0E32\u0E19\u0E16\u0E39\u0E01\u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01\u0E43\u0E19\u0E2D\u0E38\u0E1B\u0E01\u0E23\u0E13\u0E4C\u0E19\u0E35\u0E49 \u0E16\u0E49\u0E32\u0E25\u0E49\u0E32\u0E07\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E40\u0E1A\u0E23\u0E32\u0E27\u0E4C\u0E40\u0E0B\u0E2D\u0E23\u0E4C \u0E23\u0E2B\u0E31\u0E2A\u0E08\u0E30\u0E01\u0E25\u0E31\u0E1A\u0E40\u0E1B\u0E47\u0E19\u0E04\u0E48\u0E32\u0E40\u0E23\u0E34\u0E48\u0E21\u0E15\u0E49\u0E19 ", /*#__PURE__*/React.createElement("strong", null, "1234")))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      background: "#fff",
+      borderRadius: 16,
+      padding: 28,
+      boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+      marginTop: 0
+    }
+  }, /*#__PURE__*/React.createElement("h3", {
+    style: {
+      fontSize: 16,
+      fontWeight: 700,
+      color: "#0f2744",
+      marginBottom: 6
+    }
+  }, "\uD83D\uDCBE \u0E2A\u0E33\u0E23\u0E2D\u0E07\u0E41\u0E25\u0E30\u0E01\u0E39\u0E49\u0E04\u0E37\u0E19\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      color: "#64748b",
+      fontSize: 13,
+      marginBottom: 20
+    }
+  }, "Export \u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E01\u0E48\u0E2D\u0E19\u0E2D\u0E31\u0E1B\u0E40\u0E14\u0E15\u0E23\u0E30\u0E1A\u0E1A \u0E41\u0E25\u0E49\u0E27 Import \u0E01\u0E25\u0E31\u0E1A\u0E2B\u0E25\u0E31\u0E07\u0E2D\u0E31\u0E1B\u0E40\u0E14\u0E15"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 12
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => {
+      const data = {
+        students: JSON.parse(localStorage.getItem("students_v2") || "null"),
+        scores: JSON.parse(localStorage.getItem("scores_v2") || "null"),
+        templates: JSON.parse(localStorage.getItem("templates_v1") || "null"),
+        pin: localStorage.getItem("teacher_pin_v1"),
+        exportedAt: new Date().toLocaleString("th-TH")
+      };
+      const blob = new Blob([JSON.stringify(data, null, 2)], {
+        type: "application/json"
+      });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "grade_backup_" + new Date().toISOString().slice(0, 10) + ".json";
+      a.click();
+    },
+    style: {
+      background: "linear-gradient(135deg,#0f2744,#1a56db)",
+      border: "none",
+      borderRadius: 10,
+      padding: "13px",
+      color: "#fff",
+      fontSize: 15,
+      fontWeight: 700,
+      cursor: "pointer",
+      fontFamily: "'Sarabun',sans-serif"
+    }
+  }, "\uD83D\uDCE4 Export \u2014 \u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E25\u0E07\u0E40\u0E04\u0E23\u0E37\u0E48\u0E2D\u0E07"), /*#__PURE__*/React.createElement("label", {
+    style: {
+      background: "#f0fdf4",
+      border: "2px dashed #86efac",
+      borderRadius: 10,
+      padding: "13px",
+      color: "#166534",
+      fontSize: 15,
+      fontWeight: 700,
+      cursor: "pointer",
+      fontFamily: "'Sarabun',sans-serif",
+      textAlign: "center"
+    }
+  }, "\uD83D\uDCE5 Import \u2014 \u0E01\u0E39\u0E49\u0E04\u0E37\u0E19\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E08\u0E32\u0E01\u0E44\u0E1F\u0E25\u0E4C", /*#__PURE__*/React.createElement("input", {
+    type: "file",
+    accept: ".json",
+    style: {
+      display: "none"
+    },
+    onChange: e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        try {
+          const data = JSON.parse(ev.target.result);
+          if (data.students) localStorage.setItem("students_v2", JSON.stringify(data.students));
+          if (data.scores) localStorage.setItem("scores_v2", JSON.stringify(data.scores));
+          if (data.templates) localStorage.setItem("templates_v1", JSON.stringify(data.templates));
+          if (data.pin) localStorage.setItem("teacher_pin_v1", data.pin);
+          alert("✅ Import สำเร็จ! กด OK แล้วรีเฟรชหน้า");
+          window.location.reload();
+        } catch {
+          alert("❌ ไฟล์ไม่ถูกต้อง กรุณาใช้ไฟล์ที่ Export จากระบบนี้เท่านั้น");
+        }
+      };
+      reader.readAsText(file);
+    }
+  }))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: 14,
+      padding: "12px 16px",
+      background: "#eff6ff",
+      border: "1px solid #bfdbfe",
+      borderRadius: 10
+    }
+  }, /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: 12,
+      color: "#1e40af",
+      margin: 0,
+      lineHeight: 1.8
+    }
+  }, "\uD83D\uDCCC ", /*#__PURE__*/React.createElement("strong", null, "\u0E27\u0E34\u0E18\u0E35\u0E43\u0E0A\u0E49\u0E40\u0E21\u0E37\u0E48\u0E2D\u0E08\u0E30\u0E2D\u0E31\u0E1B\u0E40\u0E14\u0E15\u0E23\u0E30\u0E1A\u0E1A"), /*#__PURE__*/React.createElement("br", null), "1. \u0E01\u0E14 Export \u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E25\u0E07\u0E40\u0E04\u0E23\u0E37\u0E48\u0E2D\u0E07", /*#__PURE__*/React.createElement("br", null), "2. \u0E2D\u0E31\u0E1B\u0E42\u0E2B\u0E25\u0E14 index.html \u0E43\u0E2B\u0E21\u0E48\u0E02\u0E36\u0E49\u0E19 GitHub", /*#__PURE__*/React.createElement("br", null), "3. \u0E40\u0E1B\u0E34\u0E14\u0E40\u0E27\u0E47\u0E1A\u0E43\u0E2B\u0E21\u0E48 \u2192 \u0E40\u0E02\u0E49\u0E32\u0E23\u0E30\u0E1A\u0E1A\u0E04\u0E23\u0E39 \u2192 \u0E15\u0E31\u0E49\u0E07\u0E04\u0E48\u0E32 \u2192 \u0E01\u0E14 Import"))));
 }
 
 // ── Dashboard ──────────────────────────────────────────────
