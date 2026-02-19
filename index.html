@@ -377,7 +377,7 @@ const DEMO_STUDENTS = [{
   level: "ม.3"
 }];
 
-// ── Storage helpers (localStorage) ───────────────────────
+// ── Storage helpers (window.storage → localStorage fallback) ──
 async function load(key) {
   try {
     const v = localStorage.getItem(key);
