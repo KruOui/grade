@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ระบบตรวจสอบผลการเรียน</title>
+  <title>ระบบตรวจสอบผลการเรียน — โรงเรียนป่าลาน</title>
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -229,6 +229,17 @@ function Landing({ onSelect }) {
         <RoleCard icon="🔍" title="นักเรียน" desc="ตรวจสอบคะแนนและเกรดของตัวเอง" color="#3b82f6" onClick={() => onSelect("student")} />
         <RoleCard icon="📝" title="ครูผู้สอน" desc="บันทึกคะแนนและดูสรุปภาพรวม" color="#0d9488" onClick={() => onSelect("teacher")} />
       </div>
+
+      {/* Footer ผู้จัดทำ */}
+      <div style={{ marginTop:48, textAlign:"center", borderTop:"1px solid rgba(255,255,255,0.08)", paddingTop:24, width:"100%", maxWidth:400 }}>
+        <div style={{ fontSize:13, color:"#94a3b8", lineHeight:1.8 }}>
+          <div style={{ color:"#60a5fa", fontWeight:700, fontSize:14, marginBottom:4 }}>👩‍🏫 ผู้จัดทำ</div>
+          <div style={{ color:"#cbd5e1", fontWeight:600 }}>ครูศุทธิมณฑน์รชฎ  ไพโรจน์</div>
+          <div>กลุ่มสาระการเรียนรู้วิทยาศาสตร์และเทคโนโลยี</div>
+          <div>โรงเรียนป่าลาน</div>
+          <div style={{ color:"#475569", fontSize:12, marginTop:6 }}>© 2026 · สงวนลิขสิทธิ์</div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -301,7 +312,7 @@ function StudentView({ students, scores, onBack }) {
         <p style={{ color:"rgba(255,255,255,0.7)", fontSize:14, margin:0 }}>ภาคเรียนที่ {CURRENT_TERM} ปีการศึกษา {CURRENT_YEAR}</p>
       </div>
 
-      <div style={{ maxWidth:640, margin:"0 auto", padding:"24px 16px" }}>
+      <div style={{ maxWidth:640, margin:"0 auto", padding:"24px 16px 48px" }}>
         {/* Search */}
         <div style={{ background:"#fff", borderRadius:16, padding:20, boxShadow:"0 2px 12px rgba(0,0,0,0.06)", marginBottom:20 }}>
           <p style={{ color:"#374151", fontWeight:600, fontSize:15, marginBottom:12 }}>🔍 ค้นหาด้วยชื่อหรือรหัสนักเรียน</p>
@@ -412,6 +423,14 @@ function StudentView({ students, scores, onBack }) {
             </div>
           );
         })()}
+      </div>
+      {/* Footer */}
+      <div style={{ textAlign:"center", padding:"24px 16px", borderTop:"1px solid #e2e8f0", marginTop:8 }}>
+        <div style={{ fontSize:12, color:"#94a3b8", lineHeight:1.9 }}>
+          <div style={{ fontWeight:700, color:"#64748b" }}>ครูศุทธิมณฑน์รชฎ  ไพโรจน์</div>
+          <div>กลุ่มสาระการเรียนรู้วิทยาศาสตร์และเทคโนโลยี · โรงเรียนป่าลาน</div>
+          <div style={{ color:"#cbd5e1", fontSize:11, marginTop:2 }}>© 2026</div>
+        </div>
       </div>
     </div>
   );
