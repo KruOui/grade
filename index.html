@@ -135,15 +135,15 @@ const DEMO_STUDENTS = [
   { id: "2206", name: "เด็กหญิงเอื้องแซะ ธนพรศักดา", level: "ม.3" },
 ];
 
-// ── Storage helpers ────────────────────────────────────────
+// ── Storage helpers (localStorage) ───────────────────────
 async function load(key) {
   try {
-    const r = await window.storage.get(key);
-    return r ? JSON.parse(r.value) : null;
+    const v = localStorage.getItem(key);
+    return v ? JSON.parse(v) : null;
   } catch { return null; }
 }
 async function save(key, val) {
-  try { await window.storage.set(key, JSON.stringify(val)); } catch {}
+  try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
 }
 
 // ── Main App ───────────────────────────────────────────────
@@ -212,33 +212,31 @@ function App() {
 // ── Landing ────────────────────────────────────────────────
 function Landing({ onSelect }) {
   return (
-    <div style={{ minHeight:"100vh", background:"linear-gradient(160deg,#0a1628 0%,#0f2744 50%,#0d1f3c 100%)", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"flex-start", padding:"48px 24px 40px", fontFamily:"'Sarabun',sans-serif" }}>
+    <div style={{ minHeight:"100vh", background:"linear-gradient(160deg,#0a1628 0%,#0f2744 50%,#0d1f3c 100%)", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", padding:"32px 24px", fontFamily:"'Sarabun',sans-serif" }}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&display=swap'); * { box-sizing: border-box; }`}</style>
 
-      {/* Logo area */}
-      <div style={{ marginBottom:8 }}>
-        <div style={{ width:72, height:72, background:"linear-gradient(135deg,#3b82f6,#1d4ed8)", borderRadius:20, display:"flex", alignItems:"center", justifyContent:"center", fontSize:32, boxShadow:"0 8px 32px rgba(59,130,246,0.4)", margin:"0 auto" }}>🎓</div>
-      </div>
-      <div style={{ textAlign:"center", marginBottom:48 }}>
-        <h1 style={{ color:"#fff", fontSize:26, fontWeight:800, margin:"16px 0 6px", letterSpacing:0.3 }}>ระบบตรวจสอบผลการเรียน</h1>
-        <p style={{ color:"#94a3b8", fontSize:15, margin:0 }}>วิชาคอมพิวเตอร์ • วิทยาการคำนวณ • ออกแบบและเทคโนโลยี</p>
-        <p style={{ color:"#64748b", fontSize:13, marginTop:6 }}>ชั้น ม.1–3  |  ปีการศึกษา {CURRENT_YEAR}</p>
+      {/* Logo */}
+      <div style={{ width:64, height:64, background:"linear-gradient(135deg,#3b82f6,#1d4ed8)", borderRadius:18, display:"flex", alignItems:"center", justifyContent:"center", fontSize:28, boxShadow:"0 8px 32px rgba(59,130,246,0.4)", marginBottom:12 }}>🎓</div>
+
+      {/* ชื่อระบบ */}
+      <div style={{ textAlign:"center", marginBottom:6 }}>
+        <h1 style={{ color:"#fff", fontSize:22, fontWeight:800, margin:"0 0 4px", letterSpacing:0.3 }}>ระบบตรวจสอบผลการเรียน</h1>
+        <p style={{ color:"#94a3b8", fontSize:13, margin:0 }}>วิชาคอมพิวเตอร์ • วิทยาการคำนวณ • ออกแบบและเทคโนโลยี</p>
+        <p style={{ color:"#64748b", fontSize:12, marginTop:3 }}>ชั้น ม.1–3  |  ปีการศึกษา {CURRENT_YEAR}</p>
       </div>
 
-      <div style={{ display:"flex", flexDirection:"column", gap:16, width:"100%", maxWidth:340 }}>
+      {/* ข้อมูลผู้จัดทำ — แสดงใต้ชื่อระบบเลย */}
+      <div style={{ textAlign:"center", marginBottom:24, padding:"10px 20px", background:"rgba(255,255,255,0.05)", borderRadius:12, border:"1px solid rgba(255,255,255,0.08)" }}>
+        <div style={{ color:"#60a5fa", fontWeight:700, fontSize:12, marginBottom:3 }}>👩‍🏫 ผู้จัดทำ</div>
+        <div style={{ color:"#e2e8f0", fontWeight:600, fontSize:13 }}>ครูศุทธิมณฑน์รชฎ  ไพโรจน์</div>
+        <div style={{ color:"#94a3b8", fontSize:12 }}>กลุ่มสาระการเรียนรู้วิทยาศาสตร์และเทคโนโลยี</div>
+        <div style={{ color:"#94a3b8", fontSize:12 }}>โรงเรียนป่าลาน  |  © 2026</div>
+      </div>
+
+      {/* ปุ่มเลือกบทบาท */}
+      <div style={{ display:"flex", flexDirection:"column", gap:12, width:"100%", maxWidth:340 }}>
         <RoleCard icon="🔍" title="นักเรียน" desc="ตรวจสอบคะแนนและเกรดของตัวเอง" color="#3b82f6" onClick={() => onSelect("student")} />
         <RoleCard icon="📝" title="ครูผู้สอน" desc="บันทึกคะแนนและดูสรุปภาพรวม" color="#0d9488" onClick={() => onSelect("teacher")} />
-      </div>
-
-      {/* Footer ผู้จัดทำ */}
-      <div style={{ marginTop:48, textAlign:"center", borderTop:"1px solid rgba(255,255,255,0.08)", paddingTop:24, width:"100%", maxWidth:400 }}>
-        <div style={{ fontSize:13, color:"#94a3b8", lineHeight:1.8 }}>
-          <div style={{ color:"#60a5fa", fontWeight:700, fontSize:14, marginBottom:4 }}>👩‍🏫 ผู้จัดทำ</div>
-          <div style={{ color:"#cbd5e1", fontWeight:600 }}>ครูศุทธิมณฑน์รชฎ  ไพโรจน์</div>
-          <div>กลุ่มสาระการเรียนรู้วิทยาศาสตร์และเทคโนโลยี</div>
-          <div>โรงเรียนป่าลาน</div>
-          <div style={{ color:"#475569", fontSize:12, marginTop:6 }}>© 2026 · สงวนลิขสิทธิ์</div>
-        </div>
       </div>
     </div>
   );
@@ -424,13 +422,14 @@ function StudentView({ students, scores, onBack }) {
           );
         })()}
       </div>
-        {/* Footer */}
-        <div style={{ textAlign:"center", padding:"28px 16px 8px", borderTop:"1px solid #e2e8f0", marginTop:16 }}>
-          <div style={{ fontSize:12, color:"#94a3b8", lineHeight:2 }}>
-            <div style={{ fontWeight:700, color:"#64748b", fontSize:13 }}>👩‍🏫 ครูศุทธิมณฑน์รชฎ  ไพโรจน์</div>
-            <div>กลุ่มสาระการเรียนรู้วิทยาศาสตร์และเทคโนโลยี · โรงเรียนป่าลาน</div>
-            <div style={{ color:"#cbd5e1", fontSize:11, marginTop:2 }}>© 2026 · สงวนลิขสิทธิ์</div>
-          </div>
+      </div>
+
+      {/* Footer — always at bottom */}
+      <div style={{ borderTop:"1px solid #e2e8f0", padding:"20px 16px", textAlign:"center", background:"#f8fafc" }}>
+        <div style={{ fontSize:12, color:"#94a3b8", lineHeight:1.9 }}>
+          <div style={{ fontWeight:700, color:"#64748b", fontSize:13 }}>👩‍🏫 ครูศุทธิมณฑน์รชฎ  ไพโรจน์</div>
+          <div>กลุ่มสาระการเรียนรู้วิทยาศาสตร์และเทคโนโลยี  โรงเรียนป่าลาน</div>
+          <div style={{ color:"#cbd5e1", fontSize:11, marginTop:2 }}>© 2026 · สงวนลิขสิทธิ์</div>
         </div>
       </div>
     </div>
